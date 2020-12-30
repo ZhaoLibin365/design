@@ -18,7 +18,7 @@
         </title>
 <link rel="stylesheet" href="<?php $this->options->themeUrl('/style.css'); ?>">
 <link rel="stylesheet" href="<?php $this->options->themeUrl('css/prism.css'); ?>">
-<link rel="stylesheet" href="<?php $this->options->themeUrl('css/owo.min.css'); ?>">
+<link rel="stylesheet" href="<?php $this->options->themeUrl('css/owo.css'); ?>">
 <link rel="stylesheet" href="<?php $this->options->themeUrl('css/shortcode.css'); ?>">
 </head>
 <body id="pjax-container" class="wrapper" style="background-image:url(<?php $this->options->wrapperIMG();?>)">
