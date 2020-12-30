@@ -6,7 +6,6 @@
 <!-- DNS预解析 -->
 <link rel="dns-prefetch" href="//cdn.bootcss.com">
 <link rel="dns-prefetch" href="//cdn.jsdelivr.net">
-<link rel="dns-prefetch" href="//fonts.dogedoge.com">
 <link rel="shortcut icon" href="<?php $this->options->siteUrl(); ?>favicon.ico">
 <title><?php $this->archiveTitle(array(
             'category'  =>  _t('分类 %s 下的文章'),
