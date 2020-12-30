@@ -1,7 +1,7 @@
 <?php
 if (!defined('__TYPECHO_ROOT_DIR__')) exit;
 function themeConfig($form) {
-    echo "<link rel='stylesheet' href='".__TYPECHO_THEME_DIR__."/system/css/setting.css'/>";
+    echo "<link rel='stylesheet' href='".__TYPECHO_THEME_DIR__."/design/css/setting.css'/>";
     //感谢大米api随机图调用
     echo "
     <div id='art-box' style='background-image: url(https://api.qqsuu.cn/api/img)'>
@@ -39,14 +39,14 @@ $weibo = new Typecho_Widget_Helper_Form_Element_Text('weibo', NULL, NULL, _t('�
 $qq = new Typecho_Widget_Helper_Form_Element_Text('qq', NULL, NULL, _t('QQ'), _t('在这里输入QQ地址，注意:请加https://'));
  $form->addInput($qq);
   
-$Links = new Typecho_Widget_Helper_Form_Element_Textarea('Links', NULL, NULL, _t('友情链接'), _t('按照格式输入链接信息，格式：<br><strong>链接名称,链接地址,链接描述,链接头像</strong><br>不同信息之间用英文逗号“,”分隔，例如：<br><strong>梦不落,https://yolen.cn/,记录自己更欣赏你们,https://yolen.cn/logo.png</strong><br>多个链接换行即可，一行一个'));
-    $form->addInput($Links);
-
 $email = new Typecho_Widget_Helper_Form_Element_Text('email', NULL, NULL, _t('邮箱'), _t('在这里输入邮箱地址，注意:请加https://'));
  $form->addInput($email);
 
 $beian = new Typecho_Widget_Helper_Form_Element_Text('beian', NULL, NULL, _t('备案号') , _t('没备案当我没说'));
  $form->addInput($beian);
+  
+$Links = new Typecho_Widget_Helper_Form_Element_Textarea('Links', NULL, NULL, _t('友情链接'), _t('按照格式输入链接信息，格式：<br><strong>链接名称,链接地址,链接描述,链接头像</strong><br>不同信息之间用英文逗号“,”分隔，例如：<br><strong>梦不落,https://yolen.cn/,记录自己更欣赏你们,https://yolen.cn/logo.png</strong><br>多个链接换行即可，一行一个'));
+    $form->addInput($Links);
 
 $JCountDownStatus = new Typecho_Widget_Helper_Form_Element_Select(
     'JCountDownStatus',
@@ -56,7 +56,7 @@ $JCountDownStatus = new Typecho_Widget_Helper_Form_Element_Select(
     ),
         'off',
         '是否开启人生倒计时',
-        '介绍：开启后侧边栏将显示人生倒计时'
+        '介绍：开启后归档页面将显示人生倒计时'
 );
 $JCountDownStatus->setAttribute('class', 'j-setting-content j-setting-aside');
     $form->addInput($JCountDownStatus->multiMode());
@@ -472,10 +472,10 @@ function Links($sorts = NULL) {
             if ($sorts) {
                 $arr = explode(",", $sorts);
                 if ($sort && in_array($sort, $arr)) {
-                    $link .= $url ? '<a href="'.$url.'" target="_blank" class="friends"><img src="'.$img.'" alt="'.$name.'"/><span class="name">'.$name.'</span></a></li>' : '<li class="clear"><a href="'.$url.'" target="_blank" class="friends"></a><img src="'.$img.'" alt="'.$name.'"/><span class="name">'.$sort.'</span></a>';
+                    $link .= $url ? '<a href="'.$url.'" title="'.$description.'" target="_blank" class="friends"><img src="'.$img.'" alt="'.$name.'"/><span class="name">'.$name.'</span></a></li>' : '<li class="clear"><a href="'.$url.'" title="'.$description.'" target="_blank" class="friends"></a><img src="'.$img.'" alt="'.$name.'"/><span class="name">'.$sort.'</span></a>';
                 }
             } else {
-                $link .= $url ? '<a href="'.$url.'" target="_blank" class="friends"><img src="'.$img.'" alt="'.$name.'"/><span class="name">'.$name.'</span></a></li>' : '<li class="clear"><a href="'.$url.'" target="_blank" class="friends"></a><img src="'.$img.'" alt="'.$name.'"/><span class="name">'.$sort.'</span></a>';
+                $link .= $url ? '<a href="'.$url.'" title="'.$description.'" target="_blank" class="friends"><img src="'.$img.'" alt="'.$name.'"/><span class="name">'.$name.'</span></a></li>' : '<li class="clear"><a href="'.$url.'" title="'.$description.'" target="_blank" class="friends"></a><img src="'.$img.'" alt="'.$name.'"/><span class="name">'.$sort.'</span></a>';
             }
         }
     }
