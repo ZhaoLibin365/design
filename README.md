@@ -1,4 +1,4 @@
-![baidu](http://www.baidu.com/img/bdlogo.gif "百度logo")  
+![zhanshi](https://obs-hwe2-p1.obs.cn-east-2.myhwclouds.com/media/72000079/16093348584962.png "展示")  
 
 ## Design
 一款二合一魔改主题，前端整体样式**LIFET**主题，后台编辑器短代码和内容解析基于**G**主题
