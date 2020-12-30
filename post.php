@@ -1,5 +1,5 @@
 <?php if (!defined('__TYPECHO_ROOT_DIR__')) exit; ?>
-<?php $this->need('header.php'); ?>
+<?php $this->need('headers.php'); ?>
 <div class="autopagerize_page_element">
 <div id="post_thumb" style="background-image:url(<?php  $imgurl = $this->fields->imgurl;if($imgurl != ''){echo $imgurl;}else{$this->options->defaultPostIMG();}?>)">
 <canvas id="header_canvas"style="position:absolute;bottom:0"></canvas>
