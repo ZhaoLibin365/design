@@ -1,4 +1,4 @@
-![](https://cdn.jsdelivr.net/gh/imyolen/img/screenshot.png)
+![](https://cdn.jsdelivr.net/gh/imyolen/img/design-zs.png)
 
 ## Design
 一款二合一魔改主题，前端整体样式 **LIFET** 主题，后台编辑器短代码和内容解析基于 **G** 主题
