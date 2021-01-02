@@ -3,7 +3,7 @@
  * 简约不简单，人人都可以是设计师
  * @package Design
  * @author YOLEN
- * @version 1.0
+ * @version 1.4
  * @link https://yolen.cn
  */
 ?>
