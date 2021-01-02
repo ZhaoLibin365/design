@@ -454,13 +454,6 @@ function CommentAuthor($obj, $autoLink = NULL, $noFollow = NULL) {    //后两�
     }
 }
 
-//文章内链新窗口打开
-function themeInit($archive) {
-    if ($archive->is('single')) {
-        $archive->content = preg_replace('/<a\b([^>]+?)\bhref="((?!'.addcslashes($options->index, '/._-+=#?&').'|\#).*?)"([^>]*?)>/i', '<a\1href="\2"\3 target="_blank">', $archive->content);
-    }
-}
-
 //免插件实现友情链接功能
 function Links($sorts = NULL) {
     $options = Typecho_Widget::widget('Widget_Options');
@@ -472,10 +465,10 @@ function Links($sorts = NULL) {
             if ($sorts) {
                 $arr = explode(",", $sorts);
                 if ($sort && in_array($sort, $arr)) {
-                    $link .= $url ? '<a href="'.$url.'" title="'.$description.'" target="_blank" class="friends"><img src="'.$img.'" alt="'.$name.'"/><span class="name">'.$name.'</span></a></li>' : '<li class="clear"><a href="'.$url.'" title="'.$description.'" target="_blank" class="friends"></a><img src="'.$img.'" alt="'.$name.'"/><span class="name">'.$sort.'</span></a>';
+                    $link .= $url ? '<a href="'.$url.'" title="'.$description.'" target="_blank" class="friends"><img src="'.$img.'"/><span class="name">'.$name.'</span></a></li>' : '<li class="clear"><a href="'.$url.'" title="'.$description.'" target="_blank" class="friends"></a><img src="'.$img.'"/><span class="name">'.$sort.'</span></a>';
                 }
             } else {
-                $link .= $url ? '<a href="'.$url.'" title="'.$description.'" target="_blank" class="friends"><img src="'.$img.'" alt="'.$name.'"/><span class="name">'.$name.'</span></a></li>' : '<li class="clear"><a href="'.$url.'" title="'.$description.'" target="_blank" class="friends"></a><img src="'.$img.'" alt="'.$name.'"/><span class="name">'.$sort.'</span></a>';
+                $link .= $url ? '<a href="'.$url.'" title="'.$description.'" target="_blank" class="friends"><img src="'.$img.'"/><span class="name">'.$name.'</span></a></li>' : '<li class="clear"><a href="'.$url.'" title="'.$description.'" target="_blank" class="friends"></a><img src="'.$img.'"/><span class="name">'.$sort.'</span></a>';
             }
         }
     }
@@ -484,20 +477,20 @@ function Links($sorts = NULL) {
 
 //页面加载时间
 function timer_start() {
-    global $timestart;
-    $mtime     = explode( ' ', microtime() );
-    $timestart = $mtime[1] + $mtime[0];
-    return true;
+global $timestart;
+$mtime = explode( ' ', microtime() );
+$timestart = $mtime[1] + $mtime[0];
+return true;
 }
 timer_start();
 function timer_stop( $display = 0, $precision = 3 ) {
-    global $timestart, $timeend;
-    $mtime     = explode( ' ', microtime() );
-    $timeend   = $mtime[1] + $mtime[0];
-    $timetotal = number_format( $timeend - $timestart, $precision );
-    $r         = $timetotal < 1 ? $timetotal * 1000 . " ms" : $timetotal . " s";
-    if ( $display ) {
-        echo $r;
-    }
-    return $r;
+global $timestart, $timeend;
+$mtime = explode( ' ', microtime() );
+$timeend = $mtime[1] + $mtime[0];
+$timetotal = number_format( $timeend - $timestart, $precision );
+$r = $timetotal < 1 ? $timetotal * 1000 . " ms" : $timetotal . " s";
+if ( $display ) {
+echo $r;
+}
+return $r;
 }
