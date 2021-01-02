@@ -18,6 +18,16 @@ Prism.highlightAll(true,null);}
 //灯箱
 (function(a){a.extend({viewImage:function(c){var b=a.extend({target:".view-image img",exclude:"",delay:300},c);a(b.exclude).attr("view-image",!1);a(b.target).off().on("click",function(e){var f=e.currentTarget.src,d=e.currentTarget.href,c=".vi-"+Math.random().toString(36).substr(2);if(!a(this).attr("view-image")&&!a(this).is(b.exclude)&&(f||d&&d.match(/.+\.(jpg|jpeg|webp|gif|png)/gi)))return a("body").append("<style class='view-image-css'>.view-img{position:fixed;background:#fff;background:rgba(255,255,255,.92);width:100%;height:100%;top:0;left:0;text-align:center;padding:2%;z-index:999;cursor: zoom-out}.view-img img,.view-img span{max-width:100%;max-height:100%;position:relative;top:50%;transform: translateY(-50%);}.view-img img{animation:view-img-show .8s -0.1s ease-in-out}.view-img span{height:2em;color:#AAB2BD;overflow:hidden;position:absolute;top:50%;left:0;right:0;width:120px;text-align:center;margin:-1em auto;}.view-img span:after{content:'';position:absolute;bottom:0;left:0;transform: translateX(-100%);width:100%;height:2px;background:#ff9901;animation:view-img-load .8s -0.1s ease-in-out infinite;}@keyframes view-img-load{0%{transform: translateX(-100%);}100%{transform: translateX(100%);}}@keyframes view-img-show{0%{opacity:0;}100%{opacity:1;}}</style><div class='view-img'><span>loading...</span></div>"),setTimeout(function(){var b=new Image;b.src=f||d;b.onload=function(){a(".view-img").html('<img src="'+b.src+'" alt="ViewImage">')};a(".view-img").off().on("click",function(){a(".view-image-css").remove();a(this).remove()});a(c).html()},b.delay),!1})}})})(jQuery);
 
+//菜单
+window.addEventListener('scroll',
+function() {
+	let t = $('body, html').scrollTop();
+	if (t > 0) {
+		$('.menubar').addClass('shadow')
+	} else {
+		$('.menubar').removeClass('shadow')
+	}
+})
 
 //人生倒计时
 function init_life_time() {
@@ -217,7 +227,7 @@ function ajaxc(){
             revealElement: 'body',
             revealPosition: 'top',
             padding: 0,
-            duration: 500,
+            duration: 350,
             easing: 'swing',
             onScrollEnd: false
         }
@@ -265,61 +275,29 @@ function ajaxc(){
     };
 }(jQuery));
 
-//夜间模式切换按钮
-function set_mode_toggle(e) {
-    let t = !0, mode = "dark";
-    "true" === e.getAttribute("aria-checked") && (t = !1 , mode = "light")
-        e.setAttribute("aria-checked", String(t))
-        change_mode(mode);
-}
-// 改变模式 并设置 cookie
-function change_mode(e) {
-    const t = document.querySelector("html[data-color-mode]");
-    if (e === "dark") document.cookie = "night=1;path=/";
-    else document.cookie = "night=0;path=/"
-    t && t.setAttribute("data-color-mode", e)
-}
-// 获取当前模式
-function get_user_scheme_mode() {
-    const e = document.querySelector("html[data-color-mode]");
-    if (!e)
-        return;
-    const t = e.getAttribute("data-color-mode");
-    return "auto" === t ? function() {
-        if (get_sys_scheme_mode("dark"))
-            return "dark";
-        if (get_sys_scheme_mode("light"))
-            return "light";
-    }() : t
-}
-// 获取系统模式 先判断 cookie 在获取系统的
-function get_sys_scheme_mode(e) {
-    let night = document.cookie.replace(/(?:(?:^|.*;\s*)night\s*\=\s*([^;]*).*$)|^.*$/, "$1")
-    if (night){
-        if(night === '0'){
-            return false
-        }else if(night === '1'){
-            return true
+//密码访问文章
+$(".protected").submit(function () {
+    var surl = $(".protected").attr("action"); //表单地址
+    $.ajax({
+        type: "POST",
+        url: surl,
+        data: $('.protected').serialize(), // 你的form
+        async: true,
+        error: function (request) {
+            alert("密码提交失败，请刷新页面重试！"); //ajax提交失败报错
+        },
+        success: function (data) {
+            if (data.indexOf("密码错误") >= 0 && data.indexOf("<title>Error</title>") >= 0) {
+                swal({
+                    title: "无访问权限",
+                    text: "请输入正确密码或放弃阅读",
+                    icon: "warning",
+                    button: false,
+                });
+            } else {
+                location.reload(); //密码正确刷新页面
+            }
         }
-    }else
-    return window.matchMedia && window.matchMedia(`(prefers-color-scheme: ${e})`).matches
-}
-!async function() {
-    const e = document.querySelector(".js-promo-color-modes-toggle");
-    if (e && "auto" === function() {
-        const e = document.querySelector("html[data-color-mode]");
-        if (!e)
-            return;
-        return e.getAttribute("data-color-mode")
-    }()) {
-        "dark" === get_user_scheme_mode() && e.setAttribute("aria-checked", "true")
-    }
-}()
-!async function() {
-    document.querySelector(".js-color-mode-settings") && window.history.replaceState({}, document.title, document.URL.split("?")[0])
-}()
-// 添加点击事件
-let toggle_btn = document.getElementsByClassName("js-promo-color-modes-toggle")
-toggle_btn[0]? toggle_btn[0].addEventListener('click',function (e) {
-    set_mode_toggle(e.currentTarget)
-},false):false
+    });
+    return false;
+});
