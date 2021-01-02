@@ -1,17 +1,7 @@
 </div></div>
 <div id="colophon" class="footer">
-    <ul class="nav">
-    <li><a <?php if($this->is('index')): ?><?php endif; ?> href="<?php $this->options->siteUrl(); ?>"><?php _e('首页'); ?></a></li>
-		<?php $this->widget('Widget_Metas_Category_List')->to($category); ?>
-        <?php while($category->next()): ?>
-        <?php endwhile; ?>
-        <?php $this->widget('Widget_Contents_Page_List')->to($pages); ?>
-        <?php while($pages->next()): ?>
-        <li><a <?php if($this->is('page', $pages->slug)): ?><?php endif; ?> href="<?php $pages->permalink(); ?>"><?php $pages->title(); ?></a></li>
-        <?php endwhile; ?>
-        </ul>
 <div class="powered_by">
-<p class="copyright">Copyright&copy;2019-<?php echo date('Y'); ?><br>Designed & Coded by Yolen Load：<?php echo timer_stop();?><br><a href="https://beian.miit.gov.cn/" target="_blank"><?php $this->options->beian(); ?></a></p></div>
+<p class="copyright">Copyright&copy;2019-<?php echo date('Y'); ?><br>Designed & Coded by <a href="https://yolen.cn/" target="_blank">Yolen</a> Load：<?php echo timer_stop();?><br><a href="https://beian.miit.gov.cn/" target="_blank"><?php $this->options->beian(); ?></a></p></div>
 <div class="footer_slogan">
 <img src="<?php $this->options->themeUrl('img/slogan.svg'); ?>" alt="重拾写作的乐趣">
 </div>
@@ -24,6 +14,9 @@
 <script src="https://cdn.bootcss.com/jquery.pjax/2.0.1/jquery.pjax.js"></script>
 <script src="<?php $this->options->themeUrl('js/system.js'); ?>"></script>
 <script src="<?php $this->options->themeUrl('js/prism.js'); ?>"></script>
+<script>
+    $("a[href*='http://']:not([href*='"+location.hostname+"']),[href*='https://']:not([href*='"+location.hostname+"'])").addClass("external").attr("target","_blank");
+</script>
 <script>
     $('body').materialScrollTop();
 </script>
