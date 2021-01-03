@@ -38,8 +38,7 @@
 部分代码参考来自 [QQdie](https://qqdie.com/)
 
 ## 文末
-虽然魔改过很多typecho主题，但这是第一次发布在GitHub，不喜勿喷。
+虽然魔改过很多typecho主题，但这是第一次发布在GitHub，不喜勿喷，由于Github更新上传对于我来说比较麻烦，最新版的都在群里了。
 
-## 最后
-由于Github更新上传对于我来说比较麻烦，最新版的都在群里了
-![](https://cdn.jsdelivr.net/gh/imyolen/img/Typecho-Design-Theme2)
+## 附上群
+![](https://cdn.jsdelivr.net/gh/imyolen/img/Typecho-Design-Theme2.png)
