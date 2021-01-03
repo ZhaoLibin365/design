@@ -42,3 +42,4 @@
 
 ## 最后
 由于Github更新上传对于我来说比较麻烦，最新版的都在群里了
+![](https://cdn.jsdelivr.net/gh/imyolen/img/Typecho-Design-Theme2)
