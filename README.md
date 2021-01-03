@@ -37,5 +37,9 @@
 ## 感谢
 部分代码参考来自 [QQdie](https://qqdie.com/)
 
-## 最后
+## 文末
 虽然魔改过很多typecho主题，但这是第一次发布在GitHub，不喜勿喷。
+
+## 最后
+由于Github更新上传对于我来说比较麻烦，最新版的都在群里了
+![](https://cdn.jsdelivr.net/gh/imyolen/img/Typecho-Design-Theme.png)
