@@ -42,3 +42,4 @@
 
 ## 附上群
 ![](https://cdn.jsdelivr.net/gh/imyolen/img/Typecho-Design-Theme2.png)
+如上群二维码没显示的话，添加群号 **1079198426**
